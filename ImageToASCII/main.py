@@ -1,6 +1,5 @@
 from time import sleep
-
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
 
 def terminate():
@@ -14,7 +13,7 @@ def terminate():
 def image_resize():
     aspectRatio = height / width
     newHeight = int(
-        newWidth * aspectRatio * 0.5)  # 0.55 to compensate for the characters being taller than they are wide
+        newWidth * aspectRatio * 0.5)  # 0.5 to compensate for the characters being taller than they are wide
     return image.resize((newWidth, newHeight))
 
 
@@ -30,9 +29,8 @@ def pixels_to_ascii():
 
 print("Enter 'Quit', 'Exit', or '0' to Terminate...")
 newWidth = int(input("Enter resolution (width): "))
-chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~i!lI;:,\"^\'.` "
+chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~i!lI;:,\"^\'.` "[::-1]
 
-i = 0
 while True:
     path = input("Enter Path of Image: ")
 
