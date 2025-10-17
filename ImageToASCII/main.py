@@ -1,0 +1,65 @@
+from time import sleep
+
+from PIL import Image, ImageDraw, ImageFont
+
+
+def terminate():
+    print("Terminating", end="")
+    for i in range(3):
+        print(".", end="")
+        sleep(0.4)  # sleep for 0.4s
+    exit(0)
+
+
+def image_resize():
+    aspectRatio = height / width
+    newHeight = int(
+        newWidth * aspectRatio * 0.5)  # 0.55 to compensate for the characters being taller than they are wide
+    return image.resize((newWidth, newHeight))
+
+
+def pixels_to_ascii():
+    factor = 256 / (len(chars) - 1)  # have to convert 0 - 255 brightness into the characters we have
+
+    asciiString = ""
+    for pixel in pixels:
+        asciiString += chars[int(pixel / factor)]
+
+    return asciiString
+
+
+print("Enter 'Quit', 'Exit', or '0' to Terminate...")
+newWidth = int(input("Enter resolution (width): "))
+chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~i!lI;:,\"^\'.` "
+
+i = 0
+while True:
+    path = input("Enter Path of Image: ")
+
+    if path.lower() in ['quit', 'exit', '0']:
+        terminate()
+
+    # noinspection PyBroadException
+    try:
+        image = Image.open(path)
+    except:
+        print("\033[0;31mSomething went wrong when opening the file!\033[0m")
+        continue
+
+    width, height = image.size
+    image = image_resize()
+    width, height = image.size
+
+    # converts to grayscale
+    image = image.convert("L")
+
+    # pixels to ASCII
+    # getdata() returns the brightness in 0 - 255 for grayscale images
+    pixels = image.getdata()  # for each pixel the iterable returned by getdata(), add to the list
+    output = pixels_to_ascii()
+
+    # output
+    rowStart = 0
+    for row in range(height):
+        print(output[rowStart:rowStart + width])
+        rowStart += width
