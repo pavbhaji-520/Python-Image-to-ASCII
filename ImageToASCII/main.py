@@ -1,6 +1,16 @@
 from time import sleep
 from PIL import Image
 
+def path_input():
+    filePath = input("Enter Path of Image: ")
+
+    while filePath.startswith("\""):
+        filePath = filePath[1:]
+
+    while filePath.endswith("\""):
+        filePath = filePath[:-1]
+
+    return filePath
 
 def terminate():
     print("Terminating", end="")
@@ -12,8 +22,7 @@ def terminate():
 
 def image_resize():
     aspectRatio = height / width
-    newHeight = int(
-        newWidth * aspectRatio * 0.5)  # 0.5 to compensate for the characters being taller than they are wide
+    newHeight = int(newWidth * aspectRatio * 0.5)  # 0.5 to compensate for the characters being taller than they are wide
     return image.resize((newWidth, newHeight))
 
 
@@ -28,11 +37,18 @@ def pixels_to_ascii():
 
 
 print("Enter 'Quit', 'Exit', or '0' to Terminate...")
+
 newWidth = int(input("Enter resolution (width): "))
+if newWidth in ['quit', 'exit', '0']: terminate()
+
+isDarkMode = input("Using Dark Mode? (Y/n): ")[0]
+
 chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~i!lI;:,\"^\'.` "[::-1]
+if isDarkMode.lower() == "n":
+    chars = chars[::-1]
 
 while True:
-    path = input("Enter Path of Image: ")
+    path = path_input()
 
     if path.lower() in ['quit', 'exit', '0']:
         terminate()
