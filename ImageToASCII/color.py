@@ -102,7 +102,7 @@ while True:
     for y in range(height):
         for x in range(width):
             r, g, b = colorPixels[(x, y)]
-            print(f"\033[38;2;{r};{g};{b}m", end = "")
+            print(f"\033[38;2;{r};{g};{b}m", end = "") # setting the ANSI rgb color
             print(outputString[y][x], end ="")
         print()
 
