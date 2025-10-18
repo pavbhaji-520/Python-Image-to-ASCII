@@ -49,7 +49,7 @@ def print_seperator():
 print("Enter 'Quit', 'Exit', or '0' to Terminate...")
 
 newWidth = int(input("Enter resolution (width): "))
-if newWidth in ['quit', 'exit', '0']: terminate()
+if newWidth == 0: terminate()
 
 isDarkMode = input("Using Dark Mode? (Y/n): ")[0]
 
