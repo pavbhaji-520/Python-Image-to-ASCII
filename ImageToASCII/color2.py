@@ -56,7 +56,7 @@ def print_separator():
 print("Enter 'Quit', 'Exit', or '0' to Terminate...")
 
 newWidth = int(input("Enter resolution (width): "))
-if newWidth in ['quit', 'exit', '0']: terminate()
+if newWidth == 0: terminate()
 
 chars = "`.-\':_\",^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@"
 
