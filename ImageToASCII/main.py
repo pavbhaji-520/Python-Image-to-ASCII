@@ -36,6 +36,16 @@ def pixels_to_ascii():
     return asciiString
 
 
+def print_seperator():
+    print("\033[0m", end = "")
+    for i in range (max(2, height//100)): print("\n")
+
+    for i in range (width): print("_", end = "")
+    print()
+
+    for i in range (max(2, height//100)): print("\n")
+
+
 print("Enter 'Quit', 'Exit', or '0' to Terminate...")
 
 newWidth = int(input("Enter resolution (width): "))
@@ -73,7 +83,11 @@ while True:
     output = pixels_to_ascii()
 
     # output
+    print_seperator()
+
     rowStart = 0
     for row in range(height):
         print(output[rowStart:rowStart + width])
         rowStart += width
+
+    print_seperator()
