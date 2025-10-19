@@ -13,7 +13,10 @@ Just download the folder as ZIP and extract.
 * Open the extracted folder and navigate until there are files called black_and_white.py and color2.py
 * Open a terminal/cmd in that directory
 * ### Run one of the following commands based on use case:
-    * For black and white: `python black_and_white.py`
-    * For full color: `python color2.py`
+    * For black and white (using depth perception): `python black_and_white.py`
+    * For full color (without depth perception): `python color2.py`
+    * For full color (with depth perception): `python color_only.py`
+ 
+      (In my opinion, full color without depth perception looks the best)
 * Follow the instructions on screen
 * Zoom out or into the terminal based on need (differs with terminals and operating system)
